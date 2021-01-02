@@ -38,22 +38,20 @@ def help_user(bot, update):
     )
 
 
-@Client.on_message(Filters.command(["start"]))
-async def start(bot, update):
+@Client.on_message(filters.command(["start"]))
+def send_start(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
-    chat_id = str(update.from_user.id)
-    chat_name = str(update.from_user.first_name)
-    await bot.send_message(
+    
+    bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.START_TEXT.format(chat_name),
-        reply_markup=InlineKeyboardMarkup(
+        text=script.START_TEXT.format(update.from_user.first_name),
+       reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton('Source 😒', url='https://github.com/AswanthVK/Super-RenameBot'),
                     InlineKeyboardButton('😎 Creator', url='https://t.me/AswanthVK')
                 ],
-                [
+            [
                     InlineKeyboardButton('Project Channel', url='https://t.me/TheSuperBots')
                 ]
             ]
