@@ -38,7 +38,7 @@ def help_user(bot, update):
     )
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["start"]))
+@Client.on_message(Filters.command(["start"]))
 async def start(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/start")
