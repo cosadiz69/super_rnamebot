@@ -1,7 +1,7 @@
 class script(object):
     START_TEXT = """Hi, <b>{}</b>
 
-A Simple File Renamer Bot With Permanent Thumbnail support!💯
+A Simple File Renamer Bot With Permanent Thumbnail support!
 
 Note: You must subscribe My updates Channel for using me.
 
