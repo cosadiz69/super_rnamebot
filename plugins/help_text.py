@@ -89,9 +89,6 @@ async def rename_cb(bot, update):
     except:
         filename = "Not Available"  
 
-    try: 
-        file_size = header_info.get("Content-Length")
-    
     await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 👇".format(filename),
