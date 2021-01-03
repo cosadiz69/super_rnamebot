@@ -90,7 +90,7 @@ async def rename_cb(bot, update):
         filename = "Not Available"  
 
     else: 
-        file_size = header_info.get("Content-Length") if "Content-Length" in header_info else None
+        file_size = header_info.get("Content-Length")
     
     await bot.send_message(
         chat_id=update.chat.id,
