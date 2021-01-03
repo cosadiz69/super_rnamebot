@@ -45,9 +45,17 @@ def send_start(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Creator", url='https://t.me/AswanthVK'),
-                                                InlineKeyboardButton(text="Close", callback_data="cancel_e"),
-                                                    [InlineKeyboardButton("Project Channel", url='https://t.meTheSuperBots')]]),
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Creator', url='https://t.me/AswanthVK'),
+                    InlineKeyboardButton(text="Close", callback_data="cancel_e")
+                ],
+                [
+                    InlineKeyboardButton('Project Channel', url='https://t.me/TheSuperBots')
+                ]
+            ]
+        ), 
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
