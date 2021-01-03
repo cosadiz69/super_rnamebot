@@ -31,7 +31,7 @@ def help_user(bot, update):
         chat_id=update.chat.id,
         text=script.HELP_USER,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Project Channel", url='https://t.me/TheSuperBots'),
-                                                InlineKeyboardButton(text="✖Cancel", callback_data="cancel_e")]]),
+                                                InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -45,6 +45,9 @@ def send_start(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Creator", url='https://t.me/AswanthVK'),
+                                                InlineKeyboardButton(text="Close", callback_data="cancel_e"),
+                                                    [InlineKeyboardButton("Project Channel", url='https://t.meTheSuperBots')]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -64,6 +67,19 @@ def upgrade(bot, update):
     )
 
     
+@Client.on_message(filters.command(["about"]))
+def upgrade(bot, update):
+    # logger.info(update)
+
+    bot.send_message(
+        chat_id=update.chat.id,
+        text=script.ABOUT_TEXT,
+        parse_mode="html",
+        reply_to_message_id=update.message_id,
+        disable_web_page_preview=True
+    )
+
+
 @Client.on_message(filters.private & (filters.document | filters.video | filters.audio | filters.voice | filters.video_note))
 async def rename_cb(bot, update):
  
@@ -88,5 +104,5 @@ async def cancel_extract(bot, update):
     
     await bot.send_message(
         chat_id=update.chat.id,
-        text="Process Cancelled 🙃",
+        text="",
     )
