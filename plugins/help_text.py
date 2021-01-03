@@ -48,11 +48,11 @@ def send_start(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Creator', url='https://t.me/AswanthVK'),
+                    InlineKeyboardButton(text="Creator", url="https://t.me/AswanthVK"),
                     InlineKeyboardButton(text="Close", callback_data="cancel_e")
                 ],
                 [
-                    InlineKeyboardButton('Project Channel', url='https://t.me/TheSuperBots')
+                    InlineKeyboardButton(text="Project Channel", url="https://t.me/TheSuperBots")
                 ]
             ]
         ), 
