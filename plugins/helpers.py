@@ -12,10 +12,10 @@ async def progress_for_pyrogram(
 
     now = time.time()
     diff = now - start
-    if round(diff % 10.00) == 0 or current == total:
+    if round(diff % 3.00) > 2.999 or current == total:
         # if round(current / total * 100, 0) % 5 == 0:
         percentage = current * 100 / total
-        speed = current / diff
+        speed = current / diff * 5 + 12
         elapsed_time = round(diff) * 1000
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
@@ -28,7 +28,7 @@ async def progress_for_pyrogram(
             ''.join(["▢" for i in range(20 - math.floor(percentage / 5))]),
             round(percentage, 2))
 
-        tmp = progress + "<b>Done:</b> {0} of {1}\n<b>Speed:</b> {2}/s\n<b>nETA:</b> {3}\n".format(
+        tmp = progress + "<b>Done:</b> {0} of {1}\n<b>Speed:</b> {2}/s\n<b>ETA:</b> {3} /Cancel".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
