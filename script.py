@@ -13,13 +13,13 @@ Note: You must subscribe My updates Channel for using me.
     UPGRADE_TEXT = """no one gonna help you 🤣🤣🤣🤣"""
     DOWNLOAD_START = "Downloading…"
     UPLOAD_START = "Uploading…"
-    AFTER_SUCCESSFUL_UPLOAD_MSG = "😀Thank you for Using Me."
+    AFTER_SUCCESSFUL_UPLOAD_MSG = "😀 Thank you for Using Me."
     SAVED_THUMB = "Thumbnail Saved ✅ This Is Permanent."
     DEL_THUMB = "Thumbnail cleared succesfully!"
     NO_THUMB = "No thumbnails found!"
     SAVED_RECVD_DOC_FILE = "File Downloaded Successfully."
     CUSTOM_CAPTION_UL_FILE = " "
-    HELP_USER = """It's not that complicated
+    HELP_USER = """It's not that complicated 😧
     
 1. Send me any Telegram File.
 2. Choose appropriate option."""
