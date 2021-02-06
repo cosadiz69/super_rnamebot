@@ -75,6 +75,15 @@ async def rename_doc(bot, message):
         revoke=True
     )
     
+    try:
+        total = filetype.file_size
+
+    await bot.delete_messages(
+        chat_id=message.chat.id,
+        message_ids=message.reply_to_message.message_id,
+        revoke=True
+    )
+
     if message.from_user.id not in Config.BANNED_USERS:
         file_name = message.text
         description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
