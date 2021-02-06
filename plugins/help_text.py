@@ -23,6 +23,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceRepl
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
+from plugins.helpers import progress_for_pyrogram
 
 
 @Client.on_message(filters.command(["help"]))
@@ -91,7 +92,7 @@ async def rename_cb(bot, update):
 
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 👇".format(filename),
+        text="<b>File Name</b> : <code>{}</code> \n\Size</b> : <code>{}</code> \n\Select the desired option below 👇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝Rename", callback_data="rename_button"),
                                                 InlineKeyboardButton(text="✖Cancel", callback_data="cancel_e")]]),
         parse_mode="html",
