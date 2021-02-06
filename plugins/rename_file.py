@@ -70,9 +70,7 @@ async def rename_doc(bot, message):
         extension = "mkv"
 
     else:
-        file_size = header_info.get("Content-Length") if "Content-Length" in header_info else None
-            if file_size is not None and int(file_size) > 2147483648:
-                await message.reply_text('Well that file is bigger than I can't upload to telegram!', True) 
+        file_size = header_info.get("Content-Length") if "Content-Length" in header_info else None 
          
 
     await bot.delete_messages(
