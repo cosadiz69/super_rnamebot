@@ -69,14 +69,18 @@ async def rename_doc(bot, message):
     except:
         extension = "mkv"
 
-    await bot.delete_messages(
-        chat_id=message.chat.id,
-        message_ids=message.reply_to_message.message_id,
-        revoke=True
-    )
-    
-    try:
-        total = filetype.file_size
+    def humanbytes(size):
+    # https://stackoverflow.com/a/49361727/4723940
+    # 2**10 = 1024
+    if not size:
+        return ""
+    power = 2**10
+    n = 0
+    Dic_powerN = {0: ' ', 1: 'Ki', 2: 'Mi', 3: 'Gi', 4: 'Ti'}
+    while size > power:
+        size /= power
+        n += 1
+    return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
     await bot.delete_messages(
         chat_id=message.chat.id,
