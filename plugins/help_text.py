@@ -23,7 +23,8 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceRepl
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
-from plugins.helpers import humanbytes(size)
+
+from plugins.helpers import percentage, size
 
 
 @Client.on_message(filters.command(["help"]))
