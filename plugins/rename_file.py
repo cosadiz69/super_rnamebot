@@ -69,16 +69,11 @@ async def rename_doc(bot, message):
     except:
         extension = "mkv"
 
-    def humanbytes(size):
-    # https://stackoverflow.com/a/49361727/4723940
-    # 2**10 = 1024
-    power = 2**10
-    n = 0
-    Dic_powerN = {0: ' ', 1: 'Ki', 2: 'Mi', 3: 'Gi', 4: 'Ti'}
-    while size > power:
-        size /= power
-        n += 1
-    return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+    else:
+        file_size = header_info.get("Content-Length") if "Content-Length" in header_info else None
+            if file_size is not None and int(file_size) > 2147483648:
+                await message.reply_text('Well that file is bigger than I can't upload to telegram!', True) 
+         
 
     await bot.delete_messages(
         chat_id=message.chat.id,
