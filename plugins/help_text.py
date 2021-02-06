@@ -24,7 +24,7 @@ from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
 
-from plugins.helpers import percentage, size
+from plugins.helpers import size
 
 
 @Client.on_message(filters.command(["help"]))
