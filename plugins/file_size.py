@@ -1,3 +1,4 @@
+import pyrogram
 import os
 
 
@@ -24,3 +25,8 @@ def file_size(file_path):
 # or you can use any file path
 file_path = r"C:\Windows\System32\mspaint.exe"
 print file_size(file_path)
+
+     await bot.delete_messages(
+         chat_id=message.chat.id,
+         message_ids=message.reply_to_message.message_id,
+         revoke=True
