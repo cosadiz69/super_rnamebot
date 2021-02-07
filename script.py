@@ -13,7 +13,7 @@ Note: You must subscribe My updates Channel for using me.
     UPGRADE_TEXT = """no one gonna help you 🤣🤣🤣🤣"""
     DOWNLOAD_START = "Downloading…"
     UPLOAD_START = "Uploading…"
-    AFTER_SUCCESSFUL_UPLOAD_MSG = "😀 Thank you for Using Me."
+    AFTER_SUCCESSFUL_UPLOAD_MSG = ""
     SAVED_THUMB = "Thumbnail Saved ✅ This Is Permanent."
     DEL_THUMB = "Thumbnail cleared succesfully!"
     NO_THUMB = "No thumbnails found!"
