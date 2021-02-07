@@ -46,29 +46,6 @@ async def cus_name(bot, message):
     else:
         print('No media present')
 
-    
-async def rename_doc(bot, message):
-    
-    mssg = await bot.get_messages(
-        message.chat.id,
-        message.reply_to_message.message_id
-    )    
-    
-    media = mssg.reply_to_message
-
-    
-    if media.empty:
-        await message.reply_text('Why did you delete that 😕', True)
-        return
-        
-    filetype = media.document or media.video or media.audio or media.voice or media.video_note
-    try:
-        actualname = filetype.file_name
-        splitit = actualname.split(".")
-        extension = (splitit[-1])
-    except:
-        extension = "mkv"   
-
 def get_size(size):
     """Get size in readable format"""
 
@@ -80,6 +57,27 @@ def get_size(size):
         size /= 1024.0
     return "%.2f %s" % (size, units[i])
 
+    
+async def rename_doc(bot, message):
+    
+    mssg = await bot.get_messages(
+        message.chat.id,
+        message.reply_to_message.message_id
+    )    
+    
+    media = mssg.reply_to_message
+    
+    if media.empty:
+        await message.reply_text('Why did you delete that 😕', True)
+        return
+   
+    filetype = media.document or media.video or media.audio or media.voice or media.video_note
+    try:
+        actualname = filetype.file_name
+        splitit = actualname.split(".")
+        extension = (splitit[-1])
+    except:
+        extension = "mkv"   
 
     await bot.delete_messages(
         chat_id=message.chat.id,
