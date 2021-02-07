@@ -45,19 +45,7 @@ async def cus_name(bot, message):
         asyncio.create_task(rename_doc(bot, message))     
     else:
         print('No media present')
-
-def get_size(size):
-    """Get size in readable format"""
-
-    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
-    size = float(size)
-    i = 0
-    while size >= 1024.0 and i < len(units):
-        i += 1
-        size /= 1024.0
-    return "%.2f %s" % (size, units[i])
-
-    
+ 
 async def rename_doc(bot, message):
     
     mssg = await bot.get_messages(
@@ -77,7 +65,18 @@ async def rename_doc(bot, message):
         splitit = actualname.split(".")
         extension = (splitit[-1])
     except:
-        extension = "mkv"   
+        extension = "mkv" 
+ 
+    def get_size(size):
+    """Get size in readable format"""
+
+    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
+    size = float(size)
+    i = 0
+    while size >= 1024.0 and i < len(units):
+        i += 1
+        size /= 1024.0
+    return "%.2f %s" % (size, units[i])
 
     await bot.delete_messages(
         chat_id=message.chat.id,
