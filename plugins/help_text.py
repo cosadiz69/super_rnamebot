@@ -23,7 +23,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceRepl
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
-from plugins.rename_file import get_size
 
 @Client.on_message(filters.command(["help"]))
 def help_user(bot, update):
@@ -91,7 +90,7 @@ async def rename_cb(bot, update):
 
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 👇".format(filename),
+        text="<b>File Name</b> : <code>{}</code> \n<b>Size : {get_size(file.file_size)} \n\nSelect the desired option below 👇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 Rename", callback_data="rename_button"),
                                                 InlineKeyboardButton(text="✖ Cancel", callback_data="cancel_e")]]),
         parse_mode="html",
@@ -99,6 +98,17 @@ async def rename_cb(bot, update):
         disable_web_page_preview=True   
     )   
 
+
+def get_size(size):
+    """Get size in readable format"""
+
+    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
+    size = float(size)
+    i = 0
+    while size >= 1024.0 and i < len(units):
+        i += 1
+        size /= 1024.0
+    return "%.2f %s" % (size, units[i])
 
 async def cancel_extract(bot, update):
     
