@@ -24,8 +24,6 @@ from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
 
-From plugins.inline import get_size
-
 @Client.on_message(filters.command(["help"]))
 def help_user(bot, update):
     bot.send_message(
