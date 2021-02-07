@@ -24,6 +24,7 @@ from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
 
+From plugins.file_size import file_size
 
 @Client.on_message(filters.command(["help"]))
 def help_user(bot, update):
@@ -91,7 +92,7 @@ async def rename_cb(bot, update):
 
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 👇".format(filename),
+        text="<b>File Name</b> : <code>{}</code> \n<b>Size</b> : <code{}</code> \n\nSelect the desired option below 👇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 Rename", callback_data="rename_button"),
                                                 InlineKeyboardButton(text="✖ Cancel", callback_data="cancel_e")]]),
         parse_mode="html",
