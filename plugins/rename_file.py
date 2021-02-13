@@ -32,7 +32,7 @@ async def force_name(bot, message):
 
     await bot.send_message(
         message.reply_to_message.from_user.id,
-        "Enter new name for media\n\nNote : Extension not required",
+        "Enter new name for media\n\nNote : Extension not required <i>(eg: .mkv/.mp4)</i>",
         reply_to_message_id=message.reply_to_message.message_id,
         reply_markup=ForceReply(True)
     )
