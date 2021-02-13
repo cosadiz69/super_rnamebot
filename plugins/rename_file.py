@@ -45,7 +45,8 @@ async def cus_name(bot, message):
         asyncio.create_task(rename_doc(bot, message))     
     else:
         print('No media present')
- 
+
+    
 async def rename_doc(bot, message):
     
     mssg = await bot.get_messages(
@@ -54,25 +55,26 @@ async def rename_doc(bot, message):
     )    
     
     media = mssg.reply_to_message
+
     
     if media.empty:
         await message.reply_text('Why did you delete that 😕', True)
         return
-   
+        
     filetype = media.document or media.video or media.audio or media.voice or media.video_note
     try:
         actualname = filetype.file_name
         splitit = actualname.split(".")
         extension = (splitit[-1])
     except:
-        extension = "mkv" 
+        extension = "mkv"
 
     await bot.delete_messages(
         chat_id=message.chat.id,
         message_ids=message.reply_to_message.message_id,
         revoke=True
     )
-
+    
     if message.from_user.id not in Config.BANNED_USERS:
         file_name = message.text
         description = script.CUSTOM_CAPTION_UL_FILE.format(newname=file_name)
@@ -167,12 +169,11 @@ async def rename_doc(bot, message):
                 pass  
             try:
                 await bot.edit_message_text(
-                text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="♻  SHARE ME  ♻", url="tg://msg?text=Hai%20Friend%20%E2%9D%A4%EF%B8%8F%2C%0AToday%20i%20just%20found%20out%20an%20intresting%20and%20Powerful%20%2A%2ARename%20Bot%2A%2A%20for%20Free%F0%9F%A5%B0.%20%0A%2A%2ABot%20Link%20%3A%2A%2A%20%40SuperRenameBot%20%F0%9F%94%A5")]]),
-                chat_id=message.chat.id,
-                message_id=a.message_id,
-                disable_web_page_preview=True
-            )
+                    text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                    chat_id=message.chat.id,
+                    message_id=sendmsg.message_id,
+                    disable_web_page_preview=True
+                )
             except:
                 await sendmsg.delete()
                 await message.reply_text(script.AFTER_SUCCESSFUL_UPLOAD_MSG, quote=True)
