@@ -19,7 +19,7 @@ from script import script
 import pyrogram
 
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply, CallbackQuery
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
