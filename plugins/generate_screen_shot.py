@@ -15,14 +15,14 @@ else:
     from config import Config
 
 # the Strings used for this "thing"
-from translation import Translation
+from script import script
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.chat_base import TRChatBase
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
-from helper_funcs.display_progress import progress_for_pyrogram
+from plugins.helpers import progress_for_pyrogram
 
 
 @pyrogram.Client.on_message(pyrogram.Filters.command(["generatescss"]))
@@ -39,7 +39,7 @@ async def generate_screen_shot(bot, update):
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=script.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         c_time = time.time()
@@ -48,14 +48,14 @@ async def generate_screen_shot(bot, update):
             file_name=download_location,
             progress=progress_for_pyrogram,
             progress_args=(
-                Translation.DOWNLOAD_START,
+                script.DOWNLOAD_START,
                 a,
                 c_time
             )
         )
         if the_real_download_location is not None:
             await bot.edit_message_text(
-                text=Translation.SAVED_RECVD_DOC_FILE,
+                text=script.SAVED_RECVD_DOC_FILE,
                 chat_id=update.chat.id,
                 message_id=a.message_id
             )
@@ -72,7 +72,7 @@ async def generate_screen_shot(bot, update):
             )
             logger.info(images)
             await bot.edit_message_text(
-                text=Translation.UPLOAD_START,
+                text=script.UPLOAD_START,
                 chat_id=update.chat.id,
                 message_id=a.message_id
             )
@@ -110,7 +110,7 @@ async def generate_screen_shot(bot, update):
             except:
                 pass
             await bot.edit_message_text(
-                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
                 chat_id=update.chat.id,
                 message_id=a.message_id,
                 disable_web_page_preview=True
@@ -118,6 +118,6 @@ async def generate_screen_shot(bot, update):
     else:
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.REPLY_TO_DOC_FOR_SCSS,
+            text=script.REPLY_TO_DOC_FOR_SCSS,
             reply_to_message_id=update.message_id
         )
