@@ -29,7 +29,7 @@ def help_user(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.HELP_USER,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Creator", url='https://t.me/AswanthVK'),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("About", callback_data="about_data"),
                                                 InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         disable_web_page_preview=True,
@@ -45,8 +45,8 @@ def send_start(bot, update):
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Project Channel", url="https://t.me/TheSuperBots")],
-                                           [InlineKeyboardButton(text="Creator", url="https://t.me/AswanthVK"),
-                                                InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
+                                           [InlineKeyboardButton(text="Help", callback_data="help_data"),
+                                                InlineKeyboardButton(text="Creator", url="https://t.me/AswanthVK")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
