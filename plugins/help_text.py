@@ -90,9 +90,9 @@ async def rename_cb(bot, update):
 
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code> \n\nSelect the desired option below 👇".format(filename),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="📝 Rename", callback_data="rename_button"),
-                                                InlineKeyboardButton(text="✖ Cancel", callback_data="cancel_e")]]),
+        text="<b>File Name</b> : <code>{}</code>  \n<b>Size</b :\n\nSelect the desired option below 👇".format(filename),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Rename", callback_data="rename_button"),
+                                                InlineKeyboardButton(text="Cancel", callback_data="cancel_e")]]),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
