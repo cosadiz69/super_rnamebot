@@ -14,7 +14,7 @@ else:
     from config import Config
 
 # the Strings used for this "thing"
-from translation import Translation
+from script import script
 
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -39,7 +39,7 @@ async def ffmpegrobot_ad(bot, update):
     TRChatBase(update.from_user.id, update.text, "ffmpegrobot")
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.FF_MPEG_RO_BOT_AD_VER_TISE_MENT,
+        text=script.FF_MPEG_RO_BOT_AD_VER_TISE_MENT,
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
@@ -59,7 +59,7 @@ async def trim(bot, update):
     if os.path.exists(saved_file_path):
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=script.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         commands = update.command
@@ -71,7 +71,7 @@ async def trim(bot, update):
             if o is not None:
                 await bot.edit_message_text(
                     chat_id=update.chat.id,
-                    text=Translation.UPLOAD_START,
+                    text=script.UPLOAD_START,
                     message_id=a.message_id
                 )
                 c_time = time.time()
@@ -88,7 +88,7 @@ async def trim(bot, update):
                     reply_to_message_id=update.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=(
-                        Translation.UPLOAD_START,
+                        script.UPLOAD_START,
                         a,
                         c_time
                     )
@@ -96,7 +96,7 @@ async def trim(bot, update):
                 os.remove(o)
                 await bot.edit_message_text(
                     chat_id=update.chat.id,
-                    text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                    text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
                     disable_web_page_preview=True,
                     message_id=a.message_id
                 )
@@ -108,7 +108,7 @@ async def trim(bot, update):
             if o is not None:
                 await bot.edit_message_text(
                     chat_id=update.chat.id,
-                    text=Translation.UPLOAD_START,
+                    text=script.UPLOAD_START,
                     message_id=a.message_id
                 )
                 c_time = time.time()
@@ -121,7 +121,7 @@ async def trim(bot, update):
                     reply_to_message_id=update.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=(
-                        Translation.UPLOAD_START,
+                        script.UPLOAD_START,
                         a,
                         c_time
                     )
@@ -134,7 +134,7 @@ async def trim(bot, update):
                     reply_to_message_id=update.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=(
-                        Translation.UPLOAD_START,
+                        script.UPLOAD_START,
                         a,
                         c_time
                     )
@@ -142,21 +142,21 @@ async def trim(bot, update):
                 os.remove(o)
                 await bot.edit_message_text(
                     chat_id=update.chat.id,
-                    text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG,
+                    text=script.AFTER_SUCCESSFUL_UPLOAD_MSG,
                     disable_web_page_preview=True,
                     message_id=a.message_id
                 )
         else:
             await bot.edit_message_text(
                 chat_id=update.chat.id,
-                text=Translation.FF_MPEG_RO_BOT_RE_SURRECT_ED,
+                text=script.FF_MPEG_RO_BOT_RE_SURRECT_ED,
                 message_id=a.message_id
             )
     else:
         # reply help message
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FF_MPEG_RO_BOT_STEP_TWO_TO_ONE,
+            text=script.FF_MPEG_RO_BOT_STEP_TWO_TO_ONE,
             reply_to_message_id=update.message_id
         )
 
@@ -179,14 +179,14 @@ async def storage_info(bot, update):
             duration = metadata.get('duration')
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FF_MPEG_RO_BOT_STOR_AGE_INFO.format(duration),
+            text=script.FF_MPEG_RO_BOT_STOR_AGE_INFO.format(duration),
             reply_to_message_id=update.message_id
         )
     else:
         # reply help message
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FF_MPEG_RO_BOT_STEP_TWO_TO_ONE,
+            text=script.FF_MPEG_RO_BOT_STEP_TWO_TO_ONE,
             reply_to_message_id=update.message_id
         )
 
@@ -206,7 +206,7 @@ async def clear_media(bot, update):
         os.remove(saved_file_path)
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.FF_MPEG_DEL_ETED_CUSTOM_MEDIA,
+        text=script.FF_MPEG_DEL_ETED_CUSTOM_MEDIA,
         reply_to_message_id=update.message_id
     )
 
@@ -225,7 +225,7 @@ async def download_media(bot, update):
     if not os.path.exists(saved_file_path):
         a = await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.DOWNLOAD_START,
+            text=script.DOWNLOAD_START,
             reply_to_message_id=update.message_id
         )
         try:
@@ -235,7 +235,7 @@ async def download_media(bot, update):
                 file_name=saved_file_path,
                 progress=progress_for_pyrogram,
                 progress_args=(
-                    Translation.DOWNLOAD_START,
+                    script.DOWNLOAD_START,
                     a,
                     c_time
                 )
@@ -249,12 +249,12 @@ async def download_media(bot, update):
         else:
             await bot.edit_message_text(
                 chat_id=update.chat.id,
-                text=Translation.SAVED_RECVD_DOC_FILE,
+                text=script.SAVED_RECVD_DOC_FILE,
                 message_id=a.message_id
             )
     else:
         await bot.send_message(
             chat_id=update.chat.id,
-            text=Translation.FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS,
+            text=script.FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS,
             reply_to_message_id=update.message_id
         )
