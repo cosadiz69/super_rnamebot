@@ -61,14 +61,7 @@ async def cb_handler(client, query):
         )
         return
 
-    elif query.data == "cancel_e": 
-        await query.message.delete()  
-        await query.answer(
-                "Cancelled...!",
-                show_alert=True
-            ) 
-
-
+    
 @pyrogram.Client.on_callback_query()
 async def cb_handler(bot, update):
         
