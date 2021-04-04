@@ -21,6 +21,7 @@ import pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply, CallbackQuery
 from pyrogram.errors import UserNotParticipant
+from plugina.helpers import progress_for_pyrogram
 
 from plugins.rename_file import rename_doc
 
@@ -90,7 +91,7 @@ async def rename_cb(bot, update):
 
     await bot.send_message(
         chat_id=update.chat.id,
-        text="<b>File Name</b> : <code>{}</code>  \n<b>Size</b> :\n\nSelect the desired option below 👇".format(filename),
+        text="<b>File Name</b> : <code>{}</code>  \n<b>Size</b> :{total}\n\nSelect the desired option below 👇".format(filename),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Rename", callback_data="rename_button"),
                                                 InlineKeyboardButton("Cancel", callback_data="cancel_e")],
                                            [InlineKeyboardButton("Screenshots", callback_data="screnshots_data")]]),
