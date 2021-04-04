@@ -21,7 +21,7 @@ import pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply, CallbackQuery
 from pyrogram.errors import UserNotParticipant
-from plugina.helpers import progress_for_pyrogram
+from plugins.helpers import progress_for_pyrogram
 
 from plugins.rename_file import rename_doc
 
