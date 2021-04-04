@@ -73,6 +73,6 @@ async def cb_handler(client, query):
             await query.answer() 
             await query.message.edit_text("**Details Not Found**")
 
-     elif "cancel_e" in update.data:
+    elif "cancel_e" in update.data:
         await update.message.delete()
         await cancel_extract(bot, update.message)
