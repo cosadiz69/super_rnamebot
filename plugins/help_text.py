@@ -31,7 +31,7 @@ def help_user(bot, update):
         chat_id=update.chat.id,
         text=script.HELP_USER,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="About", callback_data="help_data"),
-                         [InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
+                                                InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -46,21 +46,22 @@ def send_start(bot, update):
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Project Channel", url="https://t.me/TheSuperBots")],
-                         InlineKeyboardButton(text="Help", callback_data="help_data"),
-                         InlineKeyboardButton(text="About", callback_data="about_data)]]),
+                                           [InlineKeyboardButton(text="Help", callback_data="help_data"),
+                                                InlineKeyboardButton(text="About", callback_data="about_data)]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
 
 
-@Client.on_message(filters.command(["upgrade"]))
+@Client.on_message(filters.command(["about"]))
 def upgrade(bot, update):
     # logger.info(update)
 
     bot.send_message(
         chat_id=update.chat.id,
         text=script.UPGRADE_TEXT,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
