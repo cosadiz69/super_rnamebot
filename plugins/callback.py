@@ -8,7 +8,7 @@ from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from sample_config import Config
-from script import Script
+from script import script
 
 
 @Client.on_callback_query()
