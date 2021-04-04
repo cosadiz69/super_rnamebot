@@ -59,20 +59,6 @@ async def cb_handler(client, query):
         )
         return
 
-    elif query.data.startswith('cancel'):
-        try:
-            query_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)] 
-            await clean_up(data['location'])  
-            await query.message.edit_text("**Cancelled...**")
-            await query.answer(
-                "Cancelled...",
-                show_alert=True
-            ) 
-        except:
-            await query.answer() 
-            await query.message.edit_text("**Details Not Found**")
-
     elif query.data == "cancel_e": 
         await query.message.delete()  
         await query.answer(
