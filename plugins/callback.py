@@ -45,18 +45,4 @@ async def cb_handler(client, query):
         return
 
 
-    elif query.data == "download_file":
-        await query.answer()
-        await query.message.delete()
-        await download_file(client, query.message)
-
-
-    elif query.data == "close": 
-        await query.message.delete()  
-        await query.answer(
-                "Cancelled...",
-                show_alert=True
-            ) 
-        except:
-            await query.answer() 
-            await query.message.edit_text(" ")        
+    
