@@ -73,6 +73,7 @@ def upgrade(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.ABOUT_TEXT,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True
