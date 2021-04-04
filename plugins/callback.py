@@ -71,4 +71,4 @@ async def cb_handler(client, query):
             ) 
         except:
             await query.answer() 
-            await query.message.edit_text("**Cancers...**")        
+            await query.message.edit_text(" ")        
