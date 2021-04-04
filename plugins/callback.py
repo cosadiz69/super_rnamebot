@@ -22,7 +22,7 @@ async def cb_handler(client, query):
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
             [InlineKeyboardButton("Help", callback_data="help_data"),
-                 InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
+                InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
         ])
 
         await query.message.edit_text(
@@ -37,7 +37,7 @@ async def cb_handler(client, query):
         await query.answer()
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("About", callback_data="about_data"),
-                 InlineKeyboardButton("Close", callback_data="cancel_e")]
+                InlineKeyboardButton("Close", callback_data="cancel_e")]
         ])
 
         await query.message.edit_text(
