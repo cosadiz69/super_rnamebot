@@ -37,10 +37,10 @@ def help_user(bot, update):
                 ]
             ]
         ),
-            reply_to_message_id=message.message_id
-        )
-    except:
-        pass
+        parse_mode="html",
+        reply_to_message_id=update.message_id,
+        disable_web_page_preview=True
+    )
 
 @Client.on_message(filters.command(["start"]))
 def send_start(bot, update):
@@ -61,10 +61,10 @@ def send_start(bot, update):
             ]
    
         ),
-            reply_to_message_id=message.message_id
-        )
-    except:
-        pass
+        parse_mode="html",
+        reply_to_message_id=update.message_id,
+        disable_web_page_preview=True
+    )
 
 @Client.on_message(filters.command(["upgrade"]))
 def upgrade(bot, update):
