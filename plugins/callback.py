@@ -57,18 +57,6 @@ async def cb_handler(client, query):
                 "Cancelled...",
                 show_alert=True
             ) 
-
-
-    elif query.data.startswith('cancel'):
-        try:
-            query_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)] 
-            await clean_up(data['location'])  
-            await query.message.edit_text(" ")
-            await query.answer(
-                "Cancelled...",
-                show_alert=True
-            ) 
         except:
             await query.answer() 
             await query.message.edit_text(" ")        
