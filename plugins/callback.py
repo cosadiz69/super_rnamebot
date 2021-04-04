@@ -13,7 +13,7 @@ from pyrogram.types import (
     CallbackQuery
 )
 
-import bot
+from __bot__ import Bot
 from script import script
 import sample_config
 
