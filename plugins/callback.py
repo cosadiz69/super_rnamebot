@@ -38,7 +38,7 @@ async def cb_handler(client, query):
         ])
 
         await query.message.edit_text(
-            Script.HELP_TEXT,
+            Script.HELP_USER,
             reply_markup=keyboard,
             disable_web_page_preview=True
         )
