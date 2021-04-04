@@ -15,7 +15,7 @@ from pyrogram.types import (
 
 import bot
 from script import script
-from sample_config import AUTH_USERS
+import sample_config
 
 BUTTONS = {}
 
