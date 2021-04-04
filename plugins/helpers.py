@@ -34,6 +34,9 @@ async def progress_for_pyrogram(
             humanbytes(speed),
             # elapsed_time if elapsed_time != '' else "0 s",
             estimated_total_time if estimated_total_time != '' else "0 s"
+
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Cancel", callback_data="cancel_e")]]),
+       
         )
         try:
             await message.edit(
