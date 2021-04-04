@@ -11,7 +11,6 @@ from sample_config import Config
 from script import script
 
 from plugins.help_text import cancel_extract
-from plugins.cbb import cancel_e
 
 @Client.on_callback_query()
 async def cb_handler(client, query):
