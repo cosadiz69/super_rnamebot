@@ -30,7 +30,7 @@ def help_user(bot, update):
         chat_id=update.chat.id,
         text=script.HELP_USER,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("About", callback_data="about_data"),
-                                                InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
+                                                InlineKeyboardButton("Close", callback_data="cancel_e")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -44,9 +44,9 @@ def send_start(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.START_TEXT.format(update.from_user.first_name),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Project Channel", url="https://t.me/TheSuperBots")],
-                                           [InlineKeyboardButton(text="Help", callback_data="help_data"),
-                                                InlineKeyboardButton(text="Creator", url="https://t.me/AswanthVK")]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
+                                           [InlineKeyboardButton("Help", callback_data="help_data"),
+                                                InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -91,9 +91,9 @@ async def rename_cb(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text="<b>File Name</b> : <code>{}</code>  \n<b>Size</b :\n\nSelect the desired option below 👇".format(filename),
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Rename", callback_data="rename_button"),
-                                                InlineKeyboardButton(text="Cancel", callback_data="cancel_e")],
-                                           [InlineKeyboardButton(text="Screenshots", callback_data="screnshots_data")]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Rename", callback_data="rename_button"),
+                                                InlineKeyboardButton("Cancel", callback_data="cancel_e")],
+                                           [InlineKeyboardButton("Screenshots", callback_data="screnshots_data")]]),
         parse_mode="html",
         reply_to_message_id=update.message_id,
         disable_web_page_preview=True   
