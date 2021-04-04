@@ -47,4 +47,15 @@ async def cb_handler(client, query):
         return
 
 
-    
+    elif query.data == "about_data":
+        await query.answer()
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Close", callback_data="cancel_e")]
+        ])
+
+        await query.message.edit_text(
+            Script.ABOUT_MSG,
+            reply_markup=keyboard,
+            disable_web_page_preview=True
+        )
+        return
