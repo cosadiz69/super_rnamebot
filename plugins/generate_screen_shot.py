@@ -20,7 +20,7 @@ from script import script
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-from pyrogram import Client, filters
+from pyrogram import Client, Filters
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from plugins.helpers import progress_for_pyrogram
 
