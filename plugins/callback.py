@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# @trojanzhex
-
-
 import re
 import pyrogram
 
@@ -20,67 +15,9 @@ from pyrogram.types import (
 
 from bot import Bot
 from script import script
-from database.mdb import searchquery
-from plugins.channel import deleteallfilters
 from config import AUTH_USERS
 
 BUTTONS = {}
- 
-@Client.on_message(filters.group & filters.text)
-async def filter(client: Bot, message: Message):
-    if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
-        return
-
-    if 2 < len(message.text) < 50:    
-        btn = []
-
-        group_id = message.chat.id
-        name = message.text
-
-        filenames, links = await searchquery(group_id, name)
-        if filenames and links:
-            for filename, link in zip(filenames, links):
-                btn.append(
-                    [InlineKeyboardButton(text=f"{filename}",url=f"{link}")]
-                )
-        else:
-            return
-
-        if not btn:
-            return
-
-        if len(btn) > 10: 
-            btns = list(split_list(btn, 10)) 
-            keyword = f"{message.chat.id}-{message.message_id}"
-            BUTTONS[keyword] = {
-                "total" : len(btns),
-                "buttons" : btns
-            }
-        else:
-            buttons = btn
-            buttons.append(
-                [InlineKeyboardButton(text="📃 Pages 1/1",callback_data="pages")]
-            )
-            await message.reply_text(
-                f"<b> Here is the result for {message.text}</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-            )
-            return
-
-        data = BUTTONS[keyword]
-        buttons = data['buttons'][0].copy()
-
-        buttons.append(
-            [InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_0_{keyword}")]
-        )    
-        buttons.append(
-            [InlineKeyboardButton(text=f"📃 Pages 1/{data['total']}",callback_data="pages")]
-        )
-
-        await message.reply_text(
-                f"<b> Here is the result for {message.text}</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-            )    
 
 
 @Client.on_callback_query()
@@ -167,9 +104,9 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         elif query.data == "start_data":
             await query.answer()
             keyboard = InlineKeyboardMarkup([
-                [InlineKeyboardButton("HELP", callback_data="help_data"),
-                    InlineKeyboardButton("ABOUT", callback_data="about_data")],
-                [InlineKeyboardButton("⭕️ JOIN OUR CHANNEL ⭕️", url="https://t.me/TroJanzHEX")]
+                [InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
+                    InlineKeyboardButton("Help", callback_data="help_data"),
+                [InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
             ])
 
             await query.message.edit_text(
@@ -182,28 +119,12 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         elif query.data == "help_data":
             await query.answer()
             keyboard = InlineKeyboardMarkup([
-                [InlineKeyboardButton("BACK", callback_data="start_data"),
-                    InlineKeyboardButton("ABOUT", callback_data="about_data")],
-                [InlineKeyboardButton("⭕️ SUPPORT ⭕️", url="https://t.me/TroJanzSupport")]
+                [InlineKeyboardButton("About", callback_data="about_data"),
+                    InlineKeyboardButton("Close", callback_data="cancel_e")]
             ])
 
             await query.message.edit_text(
                 script.HELP_MSG,
-                reply_markup=keyboard,
-                disable_web_page_preview=True
-            )
-
-
-        elif query.data == "about_data":
-            await query.answer()
-            keyboard = InlineKeyboardMarkup([
-                [InlineKeyboardButton("BACK", callback_data="help_data"),
-                    InlineKeyboardButton("START", callback_data="start_data")],
-                [InlineKeyboardButton("SOURCE CODE", url="https://github.com/TroJanzHEX/Auto-Filter-Bot-V2")]
-            ])
-
-            await query.message.edit_text(
-                script.ABOUT_MSG,
                 reply_markup=keyboard,
                 disable_web_page_preview=True
             )
