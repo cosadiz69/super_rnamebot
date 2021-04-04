@@ -19,7 +19,7 @@ async def cb_handler(client, query):
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
             [InlineKeyboardButton("Help", callback_data="help_data"),
-                InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
+                 InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
         ])
 
         await query.message.edit_text(
@@ -34,7 +34,7 @@ async def cb_handler(client, query):
         await query.answer()
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("About", callback_data="about_data"),
-                InlineKeyboardButton("Close", callback_data="cancel_e")]
+                 InlineKeyboardButton("Close", callback_data="cancel_e")]
         ])
 
         await query.message.edit_text(
@@ -49,22 +49,6 @@ async def cb_handler(client, query):
         await query.answer()
         await query.message.delete()
         await download_file(client, query.message)
-
-
-    elif query.data == "progress_msg":
-        try:
-            msg = "Progress Details...\n\nCompleted : {current}\nTotal Size : {total}\nSpeed : {speed}\nProgress : {progress:.2f}%\nETA: {eta}"
-            await query.answer(
-                msg.format(
-                    **PRGRS[f"{query.message.chat.id}_{query.message.message_id}"]
-                ),
-                show_alert=True
-            )
-        except:
-            await query.answer(
-                "Processing your file...",
-                show_alert=True
-            )
 
 
     elif query.data == "close": 
@@ -87,4 +71,4 @@ async def cb_handler(client, query):
             ) 
         except:
             await query.answer() 
-            await query.message.edit_text("**Details Not Found**")        
+            await query.message.edit_text("")        
