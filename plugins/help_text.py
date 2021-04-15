@@ -88,4 +88,9 @@ async def rename_cb(bot, update):
     )   
 
 
-
+async def cancel_extract(bot, update):
+    
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text="",
+    )
