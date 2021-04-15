@@ -98,7 +98,7 @@ async def cancel_extract(bot, update):
 
 @Client.on_message(filters.command("cancel") & filters.private)
 async def CancelWatermarkAdder(bot, cmd):
-	status = Config.DOWN_PATH + "/WatermarkAdder/status.json"
+	status = Config.DOWNLOAD_LOCATION + "/WatermarkAdder/status.json"
 	with open(status, 'r+') as f:
 		statusMsg = json.load(f)
 		if 'pid' in statusMsg.keys():
