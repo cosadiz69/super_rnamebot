@@ -19,7 +19,7 @@ from script import script
 import pyrogram
 
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ForceReply, CallbackQuery
 from pyrogram.errors import UserNotParticipant
 
 from plugins.rename_file import rename_doc
@@ -94,3 +94,50 @@ async def cancel_extract(bot, update):
         chat_id=update.chat.id,
         text="",
     )
+
+
+@Client.on_callback_query()
+async def cb_handler(client, query):
+
+    if query.data == "start_data":
+        await query.answer()
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
+            [InlineKeyboardButton("Help", callback_data="help_data"),
+                 InlineKeyboardButton("About", callback_data="about_data")]
+        ])
+
+        await query.message.edit_text(
+            script.START_TEXT.format(query.from_user.mention),
+            reply_markup=keyboard,
+            disable_web_page_preview=True
+        )
+        return
+
+
+    elif query.data == "help_data":
+        await query.answer()
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Close", callback_data="cancel_e")]
+        ])
+
+        await query.message.edit_text(
+            script.HELP_USER,
+            reply_markup=keyboard,
+            disable_web_page_preview=True
+        )
+        return
+
+
+    elif query.data == "about_data":
+        await query.answer()
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("Close", callback_data="cancel_e")]
+        ])
+
+        await query.message.edit_text(
+            Script.ABOUT_TEXT,
+            reply_markup=keyboard,
+            disable_web_page_preview=True
+        )
+        return
