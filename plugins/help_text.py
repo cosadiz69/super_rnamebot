@@ -31,8 +31,7 @@ def help_user(bot, update):
     bot.send_message(
         chat_id=update.chat.id,
         text=script.HELP_USER,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="About", callback_data="help_data"),
-                                                InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Close", callback_data="cancel_e")]]),
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
