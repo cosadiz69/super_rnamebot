@@ -89,28 +89,4 @@ async def rename_cb(bot, update):
     )   
 
 
-async def cancel_extract(bot, update):
-    
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=" ",
-    )
 
-@Client.on_message(filters.command("cancel") & filters.private)
-async def CancelWatermarkAdder(bot, cmd):
-	status = Config.DOWNLOAD_LOCATION + "/WatermarkAdder/status.json"
-	with open(status, 'r+') as f:
-		statusMsg = json.load(f)
-		if 'pid' in statusMsg.keys():
-			try:
-				os.kill(statusMsg["pid"], 9)
-				await delete_trash(status)
-			except Exception as err:
-				print(err)
-		await delete_all()
-		await bot.send_message(chat_id=Config.LOG_CHANNEL, text="#WATERMARK_ADDER: Stopped!")
-		await cmd.reply_text("Watermark Adding Process Stopped!")
-		try:
-			await bot.edit_message_text(chat_id=int(statusMsg["chat_id"]), message_id=int(statusMsg["message"]), text="🚦🚦 Last Process Stopped 🚦🚦")
-		except:
-			pass
