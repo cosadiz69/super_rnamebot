@@ -22,7 +22,7 @@ async def cb_handler(client, query):
         await query.answer()
         keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("Project Channel", url="https://t.me/TheSuperBots")],
-            [InlineKeyboardButton("Help", callback_data="help_data"),
+            [InlineKeyboardButton("Help", callback_data="help"),
                  InlineKeyboardButton("Creator", url="https://t.me/AswanthVK")]
         ])
 
@@ -37,7 +37,7 @@ async def cb_handler(client, query):
     elif query.data == "help_data":
         await query.answer()
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("About", callback_data="about_data"),
+            [InlineKeyboardButton("About", callback_data="about"),
                  InlineKeyboardButton("Close", callback_data="cancel_e")]
         ])
 
