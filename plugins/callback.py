@@ -11,6 +11,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from sample_config import Config
 from script import script
 
+from plugins.help_text import rename_cb, cancel_extract
+from plugins.rename_file import force_name
+
 
 @Client.on_callback_query()
 async def cb_handler(client, query):
